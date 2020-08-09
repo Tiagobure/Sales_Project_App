@@ -1,103 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:minWidth="25px"
+    android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/scrollView1"
     android:background="#ffe3bd31">
     <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="126.5dp"
-        android:id="@+id/layout_Title"
-        android:background="#ffe3bd31"
-        app:backgroundTintMode="src_in"
-        app:backgroundTint="#ff000000"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:foregroundGravity="center">
-        <ImageView
-            android:src="@drawable/banana1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/img_logo"/>
-        <TextView
-            android:text="FRUITS SALES"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/text_title"
-            android:textSize="50dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="0.0dp"
-            android:layout_marginBottom="0.0dp"
-            android:width="200dp" />
-    </LinearLayout>
-    <LinearLayout
         android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Layout_buttons"
-        android:padding="30dp"
-        android:background="#ffe3bd31"
-        android:layout_marginBottom="0.0dp">
-        <Button
-            android:text="Client"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cmd_client"
+        android:layout_height="match_parent"
+        android:background="#ffe3bd31">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="126.5dp"
+            android:id="@+id/layout_Title"
+            android:background="#ffe3bd31"
+            app:backgroundTintMode="src_in"
+            app:backgroundTint="#ff000000"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:width="300dp"
-            android:background="#fff50057"
-            android:padding="20dp"
-            android:lineSpacingMultiplier="23222"
-            android:layout_marginBottom="25.0dp" />
-        <Button
-            android:text="products"
-            android:layout_width="wrap_content"
+            android:foregroundGravity="center">
+            <ImageView
+                android:src="@drawable/banana1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_logo"/>
+            <TextView
+                android:text="FRUITS SALES"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/text_title"
+                android:textSize="50dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="0.0dp"
+                android:layout_marginBottom="0.0dp"
+                android:width="200dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cmd_products"
-            android:layout_gravity="center"
-            android:width="300dp"
-            android:background="#fff50057"
-            android:padding="20dp"
-            android:layout_marginBottom="20.0dp" />
-        <Button
-            android:text="sales"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cmd_sales"
-            android:layout_gravity="center"
-            android:width="300dp"
-            android:background="#fff50057"
-            android:padding="20dp"
-            android:layout_marginBottom="26.0dp" />
-        <Button
-            android:text="Statistics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cmd_Statistics"
-            android:layout_gravity="center"
-            android:width="300dp"
-            android:background="#fff50057"
-            android:padding="20dp"
-            android:layout_marginBottom="0.0dp"
-            android:keyboardNavigationCluster="true" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="22.5dp"
-        android:id="@+id/Layout_about"
-        android:background="#ffff4081" />
+            android:id="@+id/Layout_buttons"
+            android:padding="30dp"
+            android:background="#ffe3bd31"
+            android:layout_marginBottom="0.0dp">
+            <Button
+                android:text="Client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cmd_client"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:width="300dp"
+                android:background="#fff50057"
+                android:padding="20dp"
+                android:lineSpacingMultiplier="23222"
+                android:layout_marginBottom="25.0dp" />
+            <Button
+                android:text="products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cmd_products"
+                android:layout_gravity="center"
+                android:width="300dp"
+                android:background="#fff50057"
+                android:padding="20dp"
+                android:layout_marginBottom="20.0dp" />
+            <Button
+                android:text="sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cmd_sales"
+                android:layout_gravity="center"
+                android:width="300dp"
+                android:background="#fff50057"
+                android:padding="20dp"
+                android:layout_marginBottom="26.0dp" />
+            <Button
+                android:text="Statistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cmd_Statistics"
+                android:layout_gravity="center"
+                android:width="300dp"
+                android:background="#fff50057"
+                android:padding="20dp"
+                android:layout_marginBottom="0.0dp"
+                android:keyboardNavigationCluster="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="59.0dp"
+            android:id="@+id/Layout_about"
+            android:background="#ffec407a"
+            app:backgroundTintMode="add"
+            app:backgroundTint="#ff000000"
+            android:hapticFeedbackEnabled="true" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
