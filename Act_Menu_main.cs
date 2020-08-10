@@ -33,7 +33,7 @@ namespace FruitSales
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
-            
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             RequestPermissions(Permission, RequestId);
 
@@ -55,11 +55,18 @@ namespace FruitSales
         private void Cmd_client_Click(object sender, EventArgs e)
         {
             //boxclient
+            int Id_client = Cl_Manager.ID_AVAILABLE("Clients", "Id_Client");
+            AlertDialog.Builder box = new AlertDialog.Builder(this);
+            box.SetMessage("Id_client available: " + Id_client);
+            box.Show();
+
         }
 
         private void Cmd_products_Click(object sender, EventArgs e)
         {
             //boxproducts 
+            //temporary
+           
         }
 
         private void Cmd_sales_Click(object sender, EventArgs e)

@@ -101,6 +101,24 @@ namespace FruitSales
             connection.Close();
             connection.Dispose();
         }
+        public static void ExeNonQuery(string query)
+        {
+            //performs insertion, update or  deletion
+            SqliteConnection connection = new SqliteConnection("Data source = " + Data_Base);
+            connection.Open();
+
+
+            SqliteCommand command = new SqliteCommand(query, connection);
+                     
+            //communication with the database
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+
+
+            connection.Close();
+            connection.Dispose();
+        }
 
         public static DataTable ExeQuery(string query, List<SQLparameters> parametersB)
         {
@@ -122,6 +140,55 @@ namespace FruitSales
             adapter.Fill(data);
 
             return data;
+        }
+        public static DataTable ExeQuery(string query)
+        {
+            //reading data(SELECT)
+            SqliteConnection connection = new SqliteConnection("Data source = " + Data_Base);
+            connection.Open();
+
+            SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
+                     
+
+            DataTable data = new DataTable();
+
+            adapter.Fill(data);
+
+            return data;
+        }
+
+        public static int ID_AVAILABLE(string table, string column)
+        {
+            //return available id
+            int ValueId = 0;
+            SqliteConnection connection = new SqliteConnection("Data source = " + Data_Base);
+            connection.Open();
+
+            string query = "SELECT MAX(" + column + ") AS MaxID FROM " + table; 
+
+            DataTable data = new DataTable();
+            SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
+            adapter.Fill(data);
+
+            if(data.Rows.Count != 0)
+            {
+                //check that the result is not null
+                if (!DBNull.Value.Equals(data.Rows[0][0]))
+                {
+                    ValueId = Convert.ToInt32(data.Rows[0][0]) + 1;
+                }
+            }
+            connection.Close();
+            connection.Dispose();
+
+            return ValueId;
+
+        }
+
+        //test
+        public static void CLEAN_TABLE(string table)
+        {
+            ExeNonQuery("DELETE FROM " + table);
         }
     }
 }
