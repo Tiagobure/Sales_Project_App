@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -46,11 +47,11 @@ namespace FruitSales
                     "Id_Client              INTEGER NOT NULL PRIMARY KEY, " +
                     "Name                   NVARCHAR(50), " +
                     "Telephone              NVARCHAR(20), " +
-                    "Update_Info            DATETIME)"; 
+                    "Update_Info            DATETIME)";
                 command.ExecuteNonQuery();
 
                 //created product
-                command.CommandText = 
+                command.CommandText =
                     "CREATE TABLE Products (" +
                     "Id_Product             INTEGER NOT NULL PRIMARY KEY, " +
                     "Name_product           NVARCHAR(30), " +
@@ -59,7 +60,7 @@ namespace FruitSales
                 command.ExecuteNonQuery();
 
                 //created sale
-                command.CommandText = 
+                command.CommandText =
                     "CREATE TABLE Sales (" +
                     "Id_Sales             INTEGER NOT NULL PRIMARY KEY, " +
                     "Id_client            INTEGER, " +
@@ -75,5 +76,52 @@ namespace FruitSales
             }
         }
 
+
+        public static void ExeNonQuery(string query, List<SQLparameters> parametersA)
+        {
+            //performs insertion, update or  deletion
+            SqliteConnection connection = new SqliteConnection("Data source = " + Data_Base);
+            connection.Open();
+
+
+            SqliteCommand command = new SqliteCommand(query, connection);
+
+
+            foreach (SQLparameters Pmeters in parametersA)
+            {
+                command.Parameters.Add(new SqliteParameter(Pmeters.Name, Pmeters.ValueA));
+            }
+
+            //communication with the database
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+
+
+            connection.Close();
+            connection.Dispose();
+        }
+
+        public static DataTable ExeQuery(string query, List<SQLparameters> parametersB)
+        {
+            //reading data(SELECT)
+            SqliteConnection connection = new SqliteConnection("Data source = " + Data_Base);
+            connection.Open();
+
+            SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
+
+
+            foreach (SQLparameters Pmeters in parametersB)
+            {
+
+                adapter.SelectCommand.Parameters.Add(new SqliteParameter(Pmeters.Name, Pmeters.ValueA));
+            }
+
+            DataTable data = new DataTable();
+
+            adapter.Fill(data);
+
+            return data;
+        }
     }
 }
