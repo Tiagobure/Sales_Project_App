@@ -65,9 +65,9 @@ namespace FruitSales
             //temporary
             List<SQLparameters> lparameters = new List<SQLparameters>()
             {
-                new SQLparameters("@Id_Client", 0),
-                new SQLparameters  ("@Name", "Pedro souza"),
-                new SQLparameters ("@Telephone", "23232323"),
+                new SQLparameters("@Id_Client", 1),
+                new SQLparameters  ("@Name", "Tiago santos"),
+                new SQLparameters ("@Telephone", "987932323"),
                 new SQLparameters ("Update_Info", DateTime.Now)
 
             };

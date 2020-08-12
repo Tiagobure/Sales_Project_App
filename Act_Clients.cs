@@ -19,6 +19,8 @@ namespace FruitSales
         Button Cmd_add_client;
         ListView List_clients;
         TextView Number_clients;
+        List<Cl_Clients> CLIENTS;
+        List<string> NAMES;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
@@ -36,6 +38,22 @@ namespace FruitSales
 
             Cmd_add_client.Click += Cmd_add_client_Click;
 
+            List_clients.ItemLongClick += List_clients_ItemLongClick;
+        }
+
+        private void List_clients_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            Cl_Clients Clients_select = CLIENTS[e.Position];
+
+            AlertDialog.Builder Box_Edit_Delete = new AlertDialog.Builder(this);
+            Box_Edit_Delete.SetTitle("EDIT || DELETE");
+            Box_Edit_Delete.SetMessage(Clients_select.Name);
+            Box_Edit_Delete.SetCancelable(false);
+
+            Box_Edit_Delete.SetPositiveButton("Edit", delegate { });
+            Box_Edit_Delete.SetNegativeButton("Delete", delegate { DeleteCustomer(Clients_select.Id_Client); });
+
+            Box_Edit_Delete.Show();
 
 
         }
@@ -45,10 +63,19 @@ namespace FruitSales
             throw new NotImplementedException();
         }
 
+        private void DeleteCustomer(int id_client)
+        {
+
+            Cl_Manager.ExeNonQuery("DELETE FROM Clients WHERE Id_Client = " + id_client);
+            BuildsCustomerList();
+
+        }
+
         private void BuildsCustomerList()
         {
-            List<Cl_Clients> CLIENTS = new List<Cl_Clients>();
             DataTable data = Cl_Manager.ExeQuery("SELECT * FROM Clients");
+            CLIENTS = new List<Cl_Clients>();
+
             foreach (DataRow line in data.Rows)
             {
                 CLIENTS.Add(new Cl_Clients()
@@ -60,13 +87,13 @@ namespace FruitSales
 
             }
 
-            List<string> names = new List<string>();
-            foreach(Cl_Clients cl in CLIENTS)
+            NAMES = new List<string>();
+            foreach (Cl_Clients cl in CLIENTS)
             {
-                names.Add(cl.Name);
+                NAMES.Add(cl.Name);
             }
 
-            ArrayAdapter<string> AdapTer = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, names);
+            ArrayAdapter<string> AdapTer = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, NAMES);
 
             List_clients.Adapter = AdapTer;
 
@@ -75,7 +102,7 @@ namespace FruitSales
         }
         private void PresentTotalCustomers(int total_customers)
         {
-            
+
             Number_clients.Text = "Registered customers: " + total_customers;
         }
     }
