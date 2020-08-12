@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Act_Clients.cs" />
     <Compile Include="Act_Menu_main.cs" />
+    <Compile Include="Cl_Clients.cs" />
     <Compile Include="Cl_Manager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

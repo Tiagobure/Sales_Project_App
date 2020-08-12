@@ -24,7 +24,9 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_clients" />
+        android:id="@+id/list_clients"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
     <TextView
         android:text="Registered customers: 0"
         android:textAppearance="?android:attr/textAppearanceMedium"

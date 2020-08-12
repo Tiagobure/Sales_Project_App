@@ -47,19 +47,36 @@ namespace FruitSales
 
         private void BuildsCustomerList()
         {
-            PresentTotalCustomers();
-
-        }
-        private void PresentTotalCustomers()
-        {
-            int Total_customers = 0;
-            DataTable data = Cl_Manager.ExeQuery("SELECT  Id_Client FROM Clients");
-            if(data.Rows.Count != 0)
+            List<Cl_Clients> CLIENTS = new List<Cl_Clients>();
+            DataTable data = Cl_Manager.ExeQuery("SELECT * FROM Clients");
+            foreach (DataRow line in data.Rows)
             {
-                Total_customers = data.Rows.Count;
+                CLIENTS.Add(new Cl_Clients()
+                {
+                    Id_Client = Convert.ToInt16(line["Id_Client"]),
+                    Name = line["Name"].ToString(),
+                    Telephone = line["Telephone"].ToString()
+                });
 
             }
-            Number_clients.Text = "Registered customers: " + Total_customers;
+
+            List<string> names = new List<string>();
+            foreach(Cl_Clients cl in CLIENTS)
+            {
+                names.Add(cl.Name);
+            }
+
+            ArrayAdapter<string> AdapTer = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, names);
+
+            List_clients.Adapter = AdapTer;
+
+            PresentTotalCustomers(CLIENTS.Count);
+
+        }
+        private void PresentTotalCustomers(int total_customers)
+        {
+            
+            Number_clients.Text = "Registered customers: " + total_customers;
         }
     }
 }
