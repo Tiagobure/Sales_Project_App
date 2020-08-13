@@ -63,16 +63,16 @@ namespace FruitSales
             //boxproducts 
 
             //temporary
-            List<SQLparameters> lparameters = new List<SQLparameters>()
-            {
-                new SQLparameters("@Id_Client", 1),
-                new SQLparameters  ("@Name", "Tiago santos"),
-                new SQLparameters ("@Telephone", "987932323"),
-                new SQLparameters ("Update_Info", DateTime.Now)
+            //List<SQLparameters> lparameters = new List<SQLparameters>()
+            //{
+            //    new SQLparameters("@Id_Client", 1),
+            //    new SQLparameters  ("@Name", "Tiago santos"),
+            //    new SQLparameters ("@Telephone", "987932323"),
+            //    new SQLparameters ("Update_Info", DateTime.Now)
 
-            };
-            Cl_Manager.ExeNonQuery("INSERT INTO Clients VALUES (" +
-                "@Id_Client, @Name, @Telephone, @Update_Info)", lparameters);
+            //};
+            //Cl_Manager.ExeNonQuery("INSERT INTO Clients VALUES (" +
+            //    "@Id_Client, @Name, @Telephone, @Update_Info)", lparameters);
 
            
         }

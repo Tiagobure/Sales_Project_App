@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Act_Clients.cs" />
+    <Compile Include="Act_Clients_Edit.cs" />
     <Compile Include="Act_Menu_main.cs" />
     <Compile Include="Cl_Clients.cs" />
     <Compile Include="Cl_Manager.cs" />
@@ -126,6 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Layout_Client.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_edit_client.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

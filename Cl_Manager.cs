@@ -139,6 +139,9 @@ namespace FruitSales
 
             adapter.Fill(data);
 
+            connection.Close();
+            connection.Dispose();
+
             return data;
         }
         public static DataTable ExeQuery(string query)

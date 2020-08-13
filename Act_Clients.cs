@@ -24,6 +24,7 @@ namespace FruitSales
         protected override void OnCreate(Bundle savedInstanceState)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
+
             base.OnCreate(savedInstanceState);
 
             // Create your application here
@@ -46,23 +47,17 @@ namespace FruitSales
             Cl_Clients Clients_select = CLIENTS[e.Position];
 
             AlertDialog.Builder Box_Edit_Delete = new AlertDialog.Builder(this);
-            Box_Edit_Delete.SetTitle("EDIT || DELETE");
+            Box_Edit_Delete.SetTitle("EDIT | DELETE");
             Box_Edit_Delete.SetMessage(Clients_select.Name);
-            Box_Edit_Delete.SetCancelable(false);
+            
 
-            Box_Edit_Delete.SetPositiveButton("Edit", delegate { });
+            Box_Edit_Delete.SetPositiveButton("Edit", delegate { /*BACK MAN, EDIT*/});
             Box_Edit_Delete.SetNegativeButton("Delete", delegate { DeleteCustomer(Clients_select.Id_Client); });
 
             Box_Edit_Delete.Show();
 
 
         }
-
-        private void Cmd_add_client_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void DeleteCustomer(int id_client)
         {
 
@@ -70,6 +65,13 @@ namespace FruitSales
             BuildsCustomerList();
 
         }
+
+        private void Cmd_add_client_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(Act_Clients_Edit));
+        }
+
+       
 
         private void BuildsCustomerList()
         {
