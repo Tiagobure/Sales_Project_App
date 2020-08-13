@@ -24,11 +24,15 @@ namespace FruitSales
 
         int Id_client = 0;
         bool Edit = false;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
 
             base.OnCreate(savedInstanceState);
+
+           
+
 
             // Create your application here
             SetContentView(Resource.Layout.layout_edit_client);
@@ -41,8 +45,21 @@ namespace FruitSales
 
             Cmd_cancelar.Click += delegate { this.Finish(); };
             Cmd_gravar.Click += Cmd_gravar_Click;
-        }
 
+            //edit client or no
+            if (this.Intent.GetStringExtra("Id_Client") != null)
+            {
+                Id_client = int.Parse(this.Intent.GetStringExtra("Id_Client"));
+                PresentCustomer();
+                Edit = true;
+            }
+        }
+        private void PresentCustomer()
+        {
+            DataTable data = Cl_Manager.ExeQuery("SELECT * FROM Clients WHERE Id_Client = " + Id_client);
+            Name_client.Text = data.Rows[0]["Name"].ToString();
+            Phone_client.Text = data.Rows[0]["Telephone"].ToString();
+        }
         private void Cmd_gravar_Click(object sender, EventArgs e)
         {
             if (Name_client.Text == "" || Name_client.Text == null || Phone_client.Text == "" || Phone_client.Text == null)
@@ -85,12 +102,35 @@ namespace FruitSales
                 }
                 Cl_Manager.ExeNonQuery("INSERT INTO Clients VALUES (" +
                    "@Id_Client, @Name, @Telephone, @Update_Info)", lparameters);
-                
-                this.Finish();
+
+
+                Intent i = this.Intent;
+                SetResult(Result.Ok, i);
+                Finish();
             }
             else
             {
                 //EDIT CLIENT
+                DataTable data = Cl_Manager.ExeQuery("SELECT Name FROM Clients WHERE Name = @Name AND Id_Client <> @Id_Client", lparameters);
+                if (data.Rows.Count != 0)
+                {
+                    AlertDialog.Builder box = new AlertDialog.Builder(this);
+                    box.SetTitle("ERROR");
+                    box.SetMessage("There is already a customer with the same name!");
+                    box.SetPositiveButton("OK", delegate { });
+                    box.Show();
+                    return;
+                }
+                Cl_Manager.ExeNonQuery(
+                    "UPDATE Clients SET " +
+                    "Name = @Name, " +
+                    "Telephone = @Telephone, " +
+                    "Update_Info = @Update_Info "+
+                    "WHERE Id_Client = @Id_Client", lparameters);
+                
+                Intent i = this.Intent;
+                SetResult(Result.Ok, i);
+                Finish();
             }
         }
     }

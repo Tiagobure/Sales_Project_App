@@ -42,6 +42,14 @@ namespace FruitSales
             List_clients.ItemLongClick += List_clients_ItemLongClick;
         }
 
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if(resultCode == Result.Ok)
+            {
+                BuildsCustomerList();
+            }
+        }
         private void List_clients_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
         {
             Cl_Clients Clients_select = CLIENTS[e.Position];
@@ -51,7 +59,7 @@ namespace FruitSales
             Box_Edit_Delete.SetMessage(Clients_select.Name);
             
 
-            Box_Edit_Delete.SetPositiveButton("Edit", delegate { /*BACK MAN, EDIT*/});
+            Box_Edit_Delete.SetPositiveButton("Edit", delegate { EditCustomer(Clients_select.Id_Client); });
             Box_Edit_Delete.SetNegativeButton("Delete", delegate { DeleteCustomer(Clients_select.Id_Client); });
 
             Box_Edit_Delete.Show();
@@ -66,16 +74,26 @@ namespace FruitSales
 
         }
 
+        private void EditCustomer(int id_client)
+        {
+            Intent i = new Intent(this, typeof(Act_Clients_Edit));
+            i.PutExtra("Id_Client", id_client.ToString());
+            StartActivityForResult(i, 0);
+
+        }
+
         private void Cmd_add_client_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(Act_Clients_Edit));
+            //StartActivity(typeof(Act_Clients_Edit));
+            Intent i = new Intent(this, typeof(Act_Clients_Edit));
+            StartActivityForResult(i, 0);
         }
 
        
 
         private void BuildsCustomerList()
         {
-            DataTable data = Cl_Manager.ExeQuery("SELECT * FROM Clients");
+            DataTable data = Cl_Manager.ExeQuery("SELECT * FROM Clients ORDER BY Name ASC");
             CLIENTS = new List<Cl_Clients>();
 
             foreach (DataRow line in data.Rows)
