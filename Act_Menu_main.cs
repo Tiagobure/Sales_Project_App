@@ -77,6 +77,7 @@ namespace FruitSales
         private void Cmd_statistics_Click(object sender, EventArgs e)
         {
             //boxstatistics
+            StartActivity(typeof(Act_Statistic));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
