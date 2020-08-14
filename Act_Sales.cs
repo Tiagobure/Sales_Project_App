@@ -22,6 +22,7 @@ namespace FruitSales
         Button Cmd_sales_cancel;
         Button Cmd_sales_record;
         TextView Text_info;
+        TextView Text_price_total;
 
         List<Cl_Clients> CLIENTS;
         List<Cl_Products> PRODUCTS;
@@ -40,6 +41,7 @@ namespace FruitSales
             Cmd_sales_cancel = FindViewById<Button>(Resource.Id.cmd_sales_cancel);
             Cmd_sales_record = FindViewById<Button>(Resource.Id.cmd_sales_record);
             Text_info = FindViewById<TextView>(Resource.Id.text_Info);
+            Text_price_total = FindViewById<TextView>(Resource.Id.text_Price_Total);
 
             Text_info.Text = "";
 
@@ -47,7 +49,19 @@ namespace FruitSales
 
             Cmd_sales_cancel.Click += delegate { this.Finish(); };
             Cmd_sales_record.Click += Cmd_sales_record_Click;
+            Text_amount.TextChanged += Text_amount_TextChanged;
+            Combo_products.ItemSelected += Combo_products_ItemSelected;
 
+        }
+
+        private void Combo_products_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            UpdatePriceTotal();
+        }
+
+        private void Text_amount_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            UpdatePriceTotal();
         }
 
         private void Cmd_sales_record_Click(object sender, EventArgs e)
@@ -65,6 +79,7 @@ namespace FruitSales
             int id_client = CLIENTS[Combo_clients.SelectedItemPosition].Id_Client;
             int id_product = PRODUCTS[Combo_products.SelectedItemPosition].Id_Products;
             int Amount = int.Parse(Text_amount.Text);
+
             int Id_Sales = Cl_Manager.ID_AVAILABLE("Sales", "Id_Sales");
 
             List<SQLparameters> para = new List<SQLparameters>()
@@ -77,7 +92,7 @@ namespace FruitSales
 
             };
 
-            Cl_Manager.ExeNonQuery("INSERT INTO Sales VALUES(" +
+           Cl_Manager.ExeNonQuery("INSERT INTO Sales VALUES(" +
                 "@Id_Sales, " +
                 "@Id_client, " +
                 "@Id_Product, " +
@@ -85,7 +100,7 @@ namespace FruitSales
                 "@Update_Info_Sales)", para);
 
             Text_info.Text = "SALES RECORDED SUCESSFULLY!";
-            Text_info.Text = "";
+            
             Text_amount.Text = "";
 
         }
@@ -134,6 +149,33 @@ namespace FruitSales
             Combo_products.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, list_name_products);
 
             
+        }
+
+        private void UpdatePriceTotal()
+        {
+            //update price
+            if (PRODUCTS.Count == 0)
+                return;
+
+            int Amount = -1;
+            int Price_products = -1;
+            if (Text_amount.Text != "")
+            {
+                if (int.Parse(Text_amount.Text) > 0)
+                {
+                    Amount = int.Parse(Text_amount.Text);
+                    Price_products = PRODUCTS[Combo_products.SelectedItemPosition].Price;
+                }
+            }
+
+            if (Amount == -1)
+            {
+                Text_price_total.Text = "";
+            }
+            else
+            {
+                Text_price_total.Text = "Total: " + (Amount * Price_products).ToString();
+            }
         }
     }
 }
