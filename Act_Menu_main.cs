@@ -61,18 +61,8 @@ namespace FruitSales
         private void Cmd_products_Click(object sender, EventArgs e)
         {
             //boxproducts 
-
-            //temporary
-            //List<SQLparameters> lparameters = new List<SQLparameters>()
-            //{
-            //    new SQLparameters("@Id_Client", 1),
-            //    new SQLparameters  ("@Name", "Tiago santos"),
-            //    new SQLparameters ("@Telephone", "987932323"),
-            //    new SQLparameters ("Update_Info", DateTime.Now)
-
-            //};
-            //Cl_Manager.ExeNonQuery("INSERT INTO Clients VALUES (" +
-            //    "@Id_Client, @Name, @Telephone, @Update_Info)", lparameters);
+            StartActivity(typeof(Act_Products));
+          
 
            
         }
