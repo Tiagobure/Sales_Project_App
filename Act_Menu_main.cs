@@ -70,6 +70,8 @@ namespace FruitSales
         private void Cmd_sales_Click(object sender, EventArgs e)
         {
             //boxsales
+            StartActivity(typeof(Act_Sales));
+
         }
 
         private void Cmd_statistics_Click(object sender, EventArgs e)

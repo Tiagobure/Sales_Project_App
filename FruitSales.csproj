@@ -70,6 +70,7 @@
     <Compile Include="Act_Clients.cs" />
     <Compile Include="Act_Clients_Edit.cs" />
     <Compile Include="Act_Menu_main.cs" />
+    <Compile Include="Act_Sales.cs" />
     <Compile Include="Cl_Clients.cs" />
     <Compile Include="Cl_Manager.cs" />
     <Compile Include="Cl_Products.cs" />
@@ -147,6 +148,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_edit_Product.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_Sales.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

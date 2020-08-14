@@ -1,0 +1,95 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:padding="20dp">
+    <TextView
+        android:text="SALES"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_sale"
+        android:layout_gravity="center"
+        android:padding="30dp" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Info" />
+    <TextView
+        android:text="Clients:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Client"
+        android:paddingTop="10dp" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Combo_Clients"
+        android:paddingBottom="40dp" />
+    <TextView
+        android:text="Product:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Product"
+        android:paddingTop="10dp" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Combo_Products"
+        android:paddingBottom="40dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="87.6dp"
+        android:id="@+id/linearLayout2"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:layout_marginBottom="0.0dp">
+        <TextView
+            android:text="Amount:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/text_Amount"
+            android:paddingTop="10dp" />
+        <EditText
+            android:inputType="number"
+            android:layout_width="60.2dp"
+            android:layout_height="49.9dp"
+            android:id="@+id/Edit_Amount"
+            android:width="50dp"
+            android:layout_gravity="center"
+            android:maxLength="2" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_gravity="center">
+        <Button
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cmd_sales_cancel"
+            android:width="180dp" />
+        <Button
+            android:text="RECORD"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cmd_sales_record"
+            android:width="180dp" />
+    </LinearLayout>
+
+</LinearLayout>
