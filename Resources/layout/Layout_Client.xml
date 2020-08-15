@@ -3,22 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ff708090"
+    android:padding="20dp">
     <Button
         android:text="Add customer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60.6dp"
         android:minWidth="25px"
         android:minHeight="25px"
         android:id="@+id/cmd_add_client"
-        android:width="300dp"
-        android:layout_gravity="center" />
+        android:width="400dp"
+        android:layout_gravity="center"
+        android:background="#fff50057" />
     <TextView
         android:text="clients list:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/textView1"
+        android:textColor="#ff020202"
+        android:layout_marginTop="11.8dp" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
@@ -32,6 +37,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/label_number_clients" />
+        android:id="@+id/label_number_clients"
+        android:textColor="#ffdaa520" />
 
 </LinearLayout>

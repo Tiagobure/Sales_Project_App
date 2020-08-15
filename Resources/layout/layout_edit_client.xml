@@ -6,21 +6,24 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="#ff708090">
     <TextView
-        android:text="EDIT | CREATE | DELETE  "
+        android:text="EDIT | CREATE "
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:gravity="center"
-        android:paddingBottom="45dp" />
+        android:paddingBottom="45dp"
+        android:textColor="#ffebac75" />
     <TextView
         android:text="Client name:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textColor="#ff000000" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +33,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView3"
+        android:textColor="#ff000000" />
     <EditText
         android:inputType="phone"
         android:layout_width="match_parent"
@@ -49,13 +53,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/cmd_client_cancelar"
-            android:width="180dp" />
+            android:width="180dp"
+            android:background="#fff50057"
+            android:layout_marginRight="9.1dp" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/cmd_client_gravar"
             android:width="180dp"
-            android:text="RECORD" />
+            android:text="RECORD"
+            android:background="#fff50057"
+            android:layout_marginLeft="7.6dp" />
     </LinearLayout>
 
 </LinearLayout>

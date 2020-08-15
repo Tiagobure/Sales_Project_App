@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,41 +9,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scrollView1"
-    android:background="#ffe3bd31">
+    android:background="#ff708090"
+    android:padding="40dp">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffe3bd31">
+        android:background="#ffebac75">
         <LinearLayout
             android:orientation="horizontal"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="126.5dp"
+            android:layout_width="332.2dp"
+            android:layout_height="93.3dp"
             android:id="@+id/layout_Title"
-            android:background="#ffe3bd31"
+            android:background="#ff708090"
             app:backgroundTintMode="src_in"
             app:backgroundTint="#ff000000"
             android:layout_gravity="center"
             android:gravity="center"
-            android:foregroundGravity="center">
+            android:layout_marginRight="36.2dp"
+            android:layout_marginLeft="57.1dp"
+            android:layout_marginBottom="8.8dp"
+            android:layout_marginTop="0.0dp">
             <ImageView
-                android:src="@drawable/banana1"
+                android:src="@drawable/Wallet1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="66.3dp"
                 android:id="@+id/img_logo"/>
             <TextView
-                android:text="FRUITS SALES"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="219.4dp"
+                android:layout_height="50.7dp"
                 android:id="@+id/text_title"
                 android:textSize="50dp"
-                android:gravity="center_vertical"
-                android:layout_marginTop="0.0dp"
-                android:layout_marginBottom="0.0dp"
-                android:width="200dp" />
+                android:gravity="center"
+                android:layout_marginTop="28.2dp"
+                android:layout_marginBottom="26.7dp"
+                android:width="200dp"
+                android:text="WALLET+"
+                android:autoSizeTextType="uniform"
+                android:contextClickable="false"
+                android:textColor="#ffebac75"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -53,8 +60,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/Layout_buttons"
             android:padding="30dp"
-            android:background="#ffe3bd31"
-            android:layout_marginBottom="0.0dp">
+            android:background="#ff708090"
+            android:layout_marginBottom="0.0dp"
+            android:layout_marginTop="0.0dp">
             <Button
                 android:text="Client"
                 android:layout_width="wrap_content"
@@ -66,7 +74,7 @@
                 android:background="#fff50057"
                 android:padding="20dp"
                 android:lineSpacingMultiplier="23222"
-                android:layout_marginBottom="25.0dp" />
+                android:layout_marginBottom="25.0dp"/>
             <Button
                 android:text="products"
                 android:layout_width="wrap_content"
@@ -106,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="59.0dp"
             android:id="@+id/Layout_about"
-            android:background="#ffec407a"
+            android:background="#ffebac75"
             app:backgroundTintMode="add"
             app:backgroundTint="#ff000000"
             android:hapticFeedbackEnabled="true" />

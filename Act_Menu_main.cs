@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace FruitSales
 {
-    [Activity(Label = "Fruits", Theme = "@style/AppTheme", MainLauncher = true, Icon = "@drawable/pineapple")]
+    [Activity(Label = "Sales Manager", Theme = "@style/AppTheme", MainLauncher = true, Icon = "@drawable/wallet")]
     public class Act_Menu_main : Activity
     {
 

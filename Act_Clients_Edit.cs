@@ -17,8 +17,8 @@ namespace FruitSales
     public class Act_Clients_Edit : Activity
     {
 
-        Button Cmd_gravar;
-        Button Cmd_cancelar;
+        Button Cmd_record;
+        Button Cmd_cancel;
         EditText Name_client;
         EditText Phone_client;
 
@@ -37,14 +37,14 @@ namespace FruitSales
             // Create your application here
             SetContentView(Resource.Layout.layout_edit_client);
 
-            Cmd_cancelar = FindViewById<Button>(Resource.Id.cmd_client_cancelar);
-            Cmd_gravar = FindViewById<Button>(Resource.Id.cmd_client_gravar);
+            Cmd_cancel = FindViewById<Button>(Resource.Id.cmd_client_cancelar);
+            Cmd_record = FindViewById<Button>(Resource.Id.cmd_client_gravar);
             Name_client = FindViewById<EditText>(Resource.Id.edit_name_client);
             Phone_client = FindViewById<EditText>(Resource.Id.edit_phone_client);
 
 
-            Cmd_cancelar.Click += delegate { this.Finish(); };
-            Cmd_gravar.Click += Cmd_gravar_Click;
+            Cmd_cancel.Click += delegate { this.Finish(); };
+            Cmd_record.Click += Cmd_record_Click;
 
             //edit client or no
             if (this.Intent.GetStringExtra("Id_Client") != null)
@@ -60,7 +60,7 @@ namespace FruitSales
             Name_client.Text = data.Rows[0]["Name"].ToString();
             Phone_client.Text = data.Rows[0]["Telephone"].ToString();
         }
-        private void Cmd_gravar_Click(object sender, EventArgs e)
+        private void Cmd_record_Click(object sender, EventArgs e)
         {
             if (Name_client.Text == "" || Name_client.Text == null || Phone_client.Text == "" || Phone_client.Text == null)
             {
