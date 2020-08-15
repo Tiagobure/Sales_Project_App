@@ -21,6 +21,14 @@ namespace FruitSales
         List<Cl_Products> PRODUCTS;
         List<Cl_sales> SALES;
 
+        Spinner Combo_client;
+        Spinner Combo_product;
+
+        Button cmd_clients;
+        Button cmd_products;
+        Button cmd_total_sales;
+        Button cmd_total;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,10 +37,68 @@ namespace FruitSales
             SetContentView(Resource.Layout.layout_Statistics);
 
             List_sales = FindViewById<ListView>(Resource.Id.list_sales);
+            Combo_client = FindViewById<Spinner>(Resource.Id.Combo_clients_sta);
+            Combo_product = FindViewById<Spinner>(Resource.Id.Combo_products_sta);
+
+            cmd_clients = FindViewById<Button>(Resource.Id.cmd_client_sta);
+            cmd_products = FindViewById<Button>(Resource.Id.cmd_product_sta);
+            cmd_total = FindViewById<Button>(Resource.Id.Cmd_total_sta);
+            cmd_total_sales = FindViewById<Button>(Resource.Id.cmd_tota_sales_sta);
+
             BuildListClientsProducts();
-            BuildSalesList();
+            BuildSalesList("SELECT * FROM Sales");
+            PresentsSalesList();
+
+            cmd_clients.Click += Cmd_clients_Click;
+            cmd_products.Click += Cmd_products_Click;
+            cmd_total.Click += Cmd_total_Click;
+            cmd_total_sales.Click += Cmd_total_sales_Click;
+        }
+
+        private void Cmd_total_sales_Click(object sender, EventArgs e)
+        {
+            BuildSalesList("SELECT * FROM Sales");
+            PresentsSalesList();
+
+        }
+
+        private void Cmd_total_Click(object sender, EventArgs e)
+        {
+            BuildSalesList("SELECT * FROM Sales");
+            int total = 0;
+            foreach(Cl_sales to in SALES)
+            {
+                total += to.Price_Total;
+            }
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetTitle("TOTAL SALES");
+            builder.SetMessage("Total calculated: " + total);
+            builder.SetCancelable(false);
+            builder.SetPositiveButton("OK", delegate { });
+            builder.Show();
+
+        }
+
+        private void Cmd_products_Click(object sender, EventArgs e)
+        {
+            int index = Combo_product.SelectedItemPosition;
+            int id_product = PRODUCTS[index].Id_Products;
+
+            BuildSalesList("SELECT * FROM Sales WHERE Id_Product = "+ id_product);
+            PresentsSalesList();
+
+        }
+
+        private void Cmd_clients_Click(object sender, EventArgs e)
+        {
+            int index = Combo_client.SelectedItemPosition;
+            int id_client = CLIENTS[index].Id_Client;
+
+            BuildSalesList("SELECT * FROM Sales WHERE Id_Client = " + id_client);
             PresentsSalesList();
         }
+
         private void BuildListClientsProducts()
         {
 
@@ -63,16 +129,31 @@ namespace FruitSales
             }
             #endregion
 
+            List<string> Name_Clients = new List<string>();
+            foreach(Cl_Clients cl in CLIENTS)
+            {
+                Name_Clients.Add(cl.Name);
+            }
+            ArrayAdapter<string> adpter_clients = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Name_Clients);
+            Combo_client.Adapter = adpter_clients;
+            
+            List<string> Name_Products = new List<string>();
+            foreach (Cl_Products pr in PRODUCTS)
+            {
+                Name_Products.Add(pr.Name_Product);
+            }
+            ArrayAdapter<string> adapter_products = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Name_Products);
+            Combo_product.Adapter = adapter_products;
 
         }
-        private void BuildSalesList()
+        private void BuildSalesList(string query)
         {
 
-            string Query = "SELECT * FROM Sales";
+            
 
 
             SALES = new List<Cl_sales>();
-            DataTable data_sales = Cl_Manager.ExeQuery(Query);
+            DataTable data_sales = Cl_Manager.ExeQuery(query);
             foreach(DataRow line in data_sales.Rows)
             {
                 Cl_sales Neo = new Cl_sales();

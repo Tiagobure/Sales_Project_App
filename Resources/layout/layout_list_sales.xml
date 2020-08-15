@@ -2,50 +2,67 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
-        android:text="[Client name]"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/text_name_client"
+        android:minHeight="25px"
+        android:minWidth="25px"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/text_name_client" />
+        android:text="[Client name]"/>
     <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1"
+        android:minHeight="25px"
+        android:minWidth="25px">
+
         <TextView
-            android:text="Products"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:layout_width="wrap_content"
             android:id="@+id/List_Name_product_sales"
-            android:width="200dp" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:minWidth="25px"
             android:minHeight="25px"
-            android:id="@+id/List_Price_amount_sales"
+            android:minWidth="25px"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Products"
+            android:width="100dp"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/List_Price_unit_sales"
+            android:minHeight="25px"
+            android:minWidth="25px"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="[Pri./Unit]"
             android:width="100dp"
-            android:text="[Pri. | Amount]" />
+            android:gravity="center" />
+
         <TextView
-            android:text="[Total]"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="25px"
+            android:layout_width="wrap_content"
+            android:id="@+id/List_Amount_sales"
             android:minHeight="25px"
+            android:minWidth="25px"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="[Amount]"
+            android:width="100dp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="86.9dp"
             android:id="@+id/List_Total_sales"
-            android:width="100dp" />
+            android:minHeight="25px"
+            android:minWidth="25px"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="[Total]"
+            android:width="100dp"
+            android:gravity="right" />
+
     </LinearLayout>
 
 </LinearLayout>

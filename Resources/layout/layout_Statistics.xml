@@ -1,20 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1" >
-        <Button
-            android:text="Button"
+        android:id="@+id/linearLayout3">
+        <Spinner
+            android:layout_width="203.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Combo_clients_sta"
+            android:layout_marginRight="0.0dp" />
+        <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button1" />
+            android:layout_height="match_parent"
+            android:id="@+id/Combo_products_sta" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="5.7dp">
+        <Button
+            android:text="By Client"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cmd_client_sta" />
+        <Button
+            android:text="By Product"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cmd_product_sta"
+            android:layout_marginLeft="0.0dp" />
+        <Button
+            android:text="Total sales"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cmd_tota_sales_sta"
+            android:layout_marginLeft="0.0dp"
+            android:layout_marginRight="0.0dp" />
+        <Button
+            android:text="TOTAL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Cmd_total_sta"
+            android:layout_marginLeft="0.0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="399.2dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout1"
+            android:minHeight="25px"
+            android:minWidth="25px">
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:id="@+id/List_Name_product_simple"
+                android:minHeight="25px"
+                android:minWidth="25px"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Products"
+                android:width="100dp"/>
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:id="@+id/List_Price_unit_simple"
+                android:minHeight="25px"
+                android:minWidth="25px"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Price(Unit)"
+                android:width="100dp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:id="@+id/List_Amount_simple"
+                android:minHeight="25px"
+                android:minWidth="25px"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Amount"
+                android:width="100dp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="80.8dp"
+                android:id="@+id/List_Total_simple"
+                android:minHeight="25px"
+                android:minWidth="25px"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Total"
+                android:width="100dp"
+                android:gravity="right"
+                android:layout_marginRight="0.0dp" />
+
+        </LinearLayout>
     </LinearLayout>
     <ListView
         android:minWidth="25px"
